@@ -31,12 +31,12 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(WeatherListViewModel::class.java)
-        viewModel.liveData.observe(viewLifecycleOwner,object :Observer<AppState>{
+        viewModel.liveData.observe(viewLifecycleOwner, object : Observer<AppState> {
             override fun onChanged(t: AppState) {
                 Toast.makeText(requireContext(), "Работает $t", Toast.LENGTH_LONG).show()
             }
 
         })
-
+        viewModel.sentRequest()
     }
 }
